@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import creams from './cream/slice'
-
+import filter from './filter/slice'
 
 export const store = configureStore({
 
   reducer: {
-    creams
+    creams,
+    filter
     }
 
 })
