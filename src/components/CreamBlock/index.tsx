@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import { CartItem } from "../../redux/cart/types";
+import { addItem } from "../../redux/cart/slice";
 
 
 type creamProps = {
@@ -12,6 +14,21 @@ type creamProps = {
 
 const Cream: React.FC<creamProps> = ({id, name, price, imageUrl}) => {
 
+  const dispatch = useDispatch()
+
+  const onClikAdd = (event: any) => {
+  
+    const item: CartItem = {
+      id,
+      name,
+      price,
+      imageUrl,
+      count: 0,
+  
+    }
+    dispatch(addItem(item))
+  }
+  
 
 
 
@@ -35,7 +52,7 @@ return (
     <div className="cream-block__bottom">
       <div className="cream-block__price">от {price} ₽</div>
 
-      <button  className="button button--outline button--add">
+      <button   onClick={ onClikAdd }  className="button button--outline button--add">
         <svg
           width="12"
           height="12"

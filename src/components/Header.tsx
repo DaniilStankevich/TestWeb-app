@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector} from 'react-redux';
 import Search from './Search/Search';
+import { selectCart } from '../redux/cart/selectors';
 
 
 function Header() {
 
+  const {items, totalPrice} = useSelector(selectCart)
+  const totalCount = items.reduce((sum: number, item: any) => sum + item.count , 0)
 
   const isMounted = React.useRef(false)
   const location = useLocation() //Перерисовка в случае нужного адреса
@@ -32,7 +35,7 @@ return   (
       
     <div className="header__cart">
         <Link to="/cart" className="button button--cart">
-          <span>{600} ₽</span>
+          <span>{totalPrice} ₽</span>
           <div className="button__delimiter"></div>
           <svg
             width="18"
@@ -63,7 +66,7 @@ return   (
               strokeLinejoin="round"
             />
           </svg>
-          <span>{3}</span>
+          <span>{totalCount}</span>
         </Link> 
       </div> 
 
