@@ -10,6 +10,7 @@ import qs from 'qs'
 import Categories from '../components/Categories';
 import Sort, { list } from '../components/Sort';
 import Cream from '../components/CreamBlock';
+import Pagination from '../components/Pagination';
 //import Skeleton from '../components/CreamBlock/Skeleton';
 //import Pagination from '../components/Pagination';
 
@@ -107,6 +108,8 @@ return (
           <p> К сожалению, не удалось получить товары.
         Попробуйте повторить попытку позже</p> </div> :  
             <div className="content__items"> {status === 'loading' ? '' :  creams}</div>} 
+
+  <Pagination />
 
 </div>
 )}

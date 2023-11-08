@@ -2,7 +2,8 @@
 
 
 .cream-block {
-    width: 280px;
+  //  width: 280px;
+    height: 379.2;
     text-align: center;
     margin-bottom: 65px;
   
@@ -11,7 +12,11 @@
       justify-content: center;
     }
   
+
+
+    
     &__image {
+      display: block;
       width: 260px;
     }
   
