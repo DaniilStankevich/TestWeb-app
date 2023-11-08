@@ -7,9 +7,12 @@ import { useAppDispatch } from '../redux/store';
 import { fetchCreams } from '../redux/cream/asyncActions';
 import { selectPizzaData } from '../redux/cream/selectors'
 import qs from 'qs'
+import Categories from '../components/Categories';
 import Sort, { list } from '../components/Sort';
 import Cream from '../components/CreamBlock';
-import Categories from '../components/Categories';
+//import Skeleton from '../components/CreamBlock/Skeleton';
+//import Pagination from '../components/Pagination';
+
 
 
 
@@ -64,7 +67,7 @@ useEffect(() => {
 // Если был первый рендер, то проверем URL-параметры и сохраняем в redux
 // Сработка после перезагрузки страницы
 useEffect(() => {
-  if (window.location.search) {    
+  if (window.location.search) {    //Как вариант useSearchParams
     const params = qs.parse(window.location.search.substring(1))  // qs.parse - позволяет спаристь данные из ссылки в объект 
     const sort = list.find(obj => obj.sortProperty === params.sortProperty)  
     dispatch(setFilters({ ...params, sort }))
@@ -84,19 +87,26 @@ useEffect (() => {
 
 
 
+
+
 const creams =  items.map((obj: any) => (  <Cream  {...obj} key={obj.id} /> ))
+//const skeleton = [ ...new Array(4)].map((_, index)  =>  <Skeleton key={index}/> )
 
 
 return (
 <div className="container">
   <div className="content__top">
 
-  <Categories />
-  <Sort/>
-       
+
+        <Categories />
+        <Sort/>
   </div>   
-      <h2 className="content__title">Все крмема</h2>
-      {creams}
+      <h2 className="content__title">Все крема</h2>
+    {status === 'error' ? <div className="content__error-info">
+        <h2>  Упсс... 😕</h2>
+          <p> К сожалению, не удалось получить товары.
+        Попробуйте повторить попытку позже</p> </div> :  
+            <div className="content__items"> {status === 'loading' ? '' :  creams}</div>} 
 
 </div>
 )}
