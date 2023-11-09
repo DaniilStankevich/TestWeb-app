@@ -2,49 +2,44 @@
 
 
 .cream-block {
-  //  width: 280px;
-    height: 379.2;
-    text-align: center;
-    margin-bottom: 65px;
-  
-    &-wrapper {
-      display: flex;
-      justify-content: center;
-    }
-  
+  height: 100%;
+  text-align: center;
+  margin-bottom: 65px;
 
-
-    
-    &__image {
-      display: block;
-      width: 260px;
-    }
-  
-    &__container {
-      border: 2px solid rgb(20, 167, 221);
-      border-radius: 5px;
-    }
-  
-    &__title {
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 1%;
-      margin-bottom: 20px;
-    }
-  
-  
-    &__bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-  
-    &__price {
-      font-weight: bold;
-      font-size: 22px;
-      line-height: 27px;
-      letter-spacing: 0.015em;
-    }
+  &-wrapper {
+    display: flex;
+    justify-content: center;
   }
-  
+
+  &__image {
+    width: 260px;
+  }
+
+  &__container {
+    border: 2px solid rgba(20, 167, 221, 0.3);
+    border-radius: 8px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1%;
+    margin-bottom: 20px;
+  }
+
+ 
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: 0.015em;
+  }
+}
