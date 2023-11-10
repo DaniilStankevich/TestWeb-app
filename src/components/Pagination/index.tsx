@@ -6,7 +6,7 @@ import { setCurrentPage } from "../../redux/filter/slice";
 import { selectFilter } from "../../redux/filter/selectors";
 
 const Pagination: React.FC = () => {
-  const { currentPage } = useSelector(selectFilter);
+  const { currentPage } = useSelector(selectFilter); // текущая страница
   const dispatch = useDispatch();
 
   return (

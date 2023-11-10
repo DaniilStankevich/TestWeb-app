@@ -11,7 +11,6 @@ function Header() {
     0
   );
 
-  const isMounted = React.useRef(false);
   const location = useLocation(); //Перерисовка в случае нужного адреса
 
   return (

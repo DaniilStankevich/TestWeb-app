@@ -13,10 +13,12 @@ type creamProps = {
 
 const Cream: React.FC<creamProps> = ({ id, name, price, imageUrl }) => {
   const dispatch = useDispatch();
-  const cartItemCount = useSelector(selectCartItemById(id)); // Возврщает count всех найденных пицц одно id
+  const cartItemCount = useSelector(selectCartItemById(id)); // Общее количество items
 
+  // Ничего не отображается в восле "+" если значение "0"
   let addedCount = cartItemCount > 0 ? cartItemCount : "";
 
+  // Добавление товара
   const onClikAdd = (event: any) => {
     const item: CartItem = {
       id,

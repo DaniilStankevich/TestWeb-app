@@ -1,8 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearch } from "../../redux/filter/slice";
-import { setCurrentPage } from "../../redux/filter/slice";
+import { setSearch, setCurrentPage } from "../../redux/filter/slice";
 import { selectFilter } from "../../redux/filter/selectors";
 import debounce from "lodash.debounce";
 import styles from "./Search.module.scss";
@@ -16,6 +15,7 @@ const Search: React.FC = () => {
   // Переменная inputRef создана для фокуса после "onClickClear"
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Запрос будет отправлен через 3 сек после "остановки инпута"
   const updateSearchValue = useCallback(
     debounce((str) => {
       let endValue = str.replace(/ +/g, " ").trim();
@@ -31,13 +31,12 @@ const Search: React.FC = () => {
     []
   );
 
-  function sstr(str: string): void {}
-
   const onChangeInput = (event: any) => {
     setValue(event.target.value); //Здесь идет мгновенная перерисовка ипута
     updateSearchValue(event.target.value); //Запуск функции debounce для отправки данных
   };
 
+  // Функция отчистки инпута
   const onClickClear = () => {
     searchDispath(setSearch("")); // В хранилище очищаем поле ввода
     updateSearchValue(""); // Запускаем функцию debounce с пустой строкой для отмены запроса

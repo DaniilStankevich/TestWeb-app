@@ -5,7 +5,7 @@ import { setFilters } from "../redux/filter/slice";
 import { selectFilter } from "../redux/filter/selectors";
 import { useAppDispatch } from "../redux/store";
 import { fetchCreams } from "../redux/cream/asyncActions";
-import { selectPizzaData } from "../redux/cream/selectors";
+import { selectCreamData } from "../redux/cream/selectors";
 import qs from "qs";
 import Categories from "../components/Categories";
 import Sort, { list } from "../components/Sort";
@@ -14,18 +14,16 @@ import Pagination from "../components/Pagination";
 import Skeleton from "../components/CreamBlock/Skeleton";
 
 export const Home: React.FC = () => {
-  console.log(typeof null);
-
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const isSeacrh = useRef(false);
   const isMounted = useRef(false);
 
-  const { items, status } = useSelector(selectPizzaData);
+  const { items, status } = useSelector(selectCreamData);
   const { categoryId, sort, currentPage, search } = useSelector(selectFilter);
 
-  const getPizzas = async () => {
+  const getCreams = async () => {
     const sortBy = sort.sortProperty.replace("-", ""); // по чем сортировать (rating, price, name)
     const order = sort.sortProperty.includes("-") ? "asc" : "desc"; // убыванию-возрастанию
     const category = categoryId > 0 ? `category=${categoryId}` : "";
@@ -73,11 +71,12 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     if (!isSeacrh.current) {
-      getPizzas();
+      getCreams();
     }
     isSeacrh.current = false;
   }, [categoryId, sort.sortProperty, search, currentPage]);
 
+  // Присвоение компонентов переменным
   const creams = items.map((obj: any) => <Cream {...obj} key={obj.id} />);
   const skeleton = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />

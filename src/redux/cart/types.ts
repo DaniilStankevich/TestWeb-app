@@ -1,21 +1,17 @@
 export type CartItem = {
-    id: number,
-    name: string,
-    price: number,
-    imageUrl: string,
-   // type: string,
-   // size: number,
-
-    count: number,
-  //  uniqueValue: string
-}
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  count: number;
+};
 
 export interface MyActionPayload {
-    id: number;
-  }
+  id: number;
+}
 
 export interface CartSliceState {
-    totalPrice: number
-    items: CartItem[]
-    amountPizzas: number
+  totalPrice: number;
+  items: CartItem[];
+  amountCreams: number;
 }

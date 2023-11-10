@@ -1,4 +1,4 @@
-import { RootState } from "../store"
+import { RootState } from "../store";
 
-export const selectPizzaData = (state: RootState) => state.creams
-export const selectPizzaSTATUS = (state: RootState) => state.creams.status
+export const selectCreamData = (state: RootState) => state.creams;
+export const selectCreamSTATUS = (state: RootState) => state.creams.status;
